@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      List Furniture
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>Category</ion-label>
+    <ion-select [(ngModel)]="categorySelected" (ionChange)="loadFurniture()" placeholder="Select One">
+      <ion-select-option value="1">ArmChair</ion-select-option>
+      <ion-select-option value="2">Sofa</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-card *ngFor="let furniture of furnitureList">
+    <ion-slides pager>
+      <ion-slide *ngFor="let img of furniture.images">
+        <img src={{img}}>
+      </ion-slide>
+    </ion-slides>
+    <ion-card-content>
+      <ion-card-title> {{furniture.name}}</ion-card-title>
+      <p>{{furniture.description}}</p>
+      <p>Price: ${{furniture.price}}</p>
+      <p>Quantitiy: {{furniture.quantity}}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
